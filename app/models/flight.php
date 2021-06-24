@@ -7,6 +7,11 @@ class Flight {
         $stmt->execute();
         return $stmt->fetchAll();
     }
+    static public function getAllres(){
+        $stmt = DB::connect()->prepare('SELECT * FROM reservation');
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 
     static public function getflight($data){
         $id = $data['id'];
@@ -57,6 +62,19 @@ class Flight {
         $id = $data['id'];
         try{
             $query = 'DELETE FROM flight WHERE id=:id';
+            $stmt = DB::connect()->prepare($query);
+            $stmt->execute(array(":id" => $id));
+            if($stmt->execute()){
+                return 'ok';
+            }
+        }catch(PDOException $ex){
+            echo 'error' . $ex->getMessage();
+        }
+    }
+    static public function deleteRev($data){
+        $id = $data['id'];
+        try{
+            $query = 'DELETE FROM reservation WHERE id=:id';
             $stmt = DB::connect()->prepare($query);
             $stmt->execute(array(":id" => $id));
             if($stmt->execute()){

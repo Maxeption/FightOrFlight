@@ -6,6 +6,10 @@ class FlightController{
         $flights = Flight::getAll();
         return $flights;
     }
+    public function getAllreservations(){
+        $flights = Flight::getAllres();
+        return $flights;
+    }
 
     public function getOneflight(){
         if(isset($_POST['id'])){
@@ -69,6 +73,18 @@ class FlightController{
             $result = Flight::delete($data);
             if($result === 'ok'){
                 Session::set('success', 'Flight Deleted');
+                    Redirect::to('delete');
+            }else{
+               echo $result ;
+            }
+        }
+    }
+    public function deleteRev(){
+        if(isset($_POST['id'])){
+            $data['id'] = $_POST['id'];
+            $result = Flight::deleteRev($data);
+            if($result === 'ok'){
+                Session::set('success', 'Reservation Deleted');
                     Redirect::to('delete');
             }else{
                echo $result ;

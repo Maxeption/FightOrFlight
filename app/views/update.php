@@ -5,7 +5,6 @@
 }else{
     Redirect::to('home');
 }
-
 	if(isset($_POST['submit'])){
 		$exitFlight = new FlightController();
 		$exitFlight->updateFlight();
@@ -16,13 +15,17 @@
     <div class="row">
         <div class="col-md-8 mx-auto"></div>
         <div class="card">
-            <div class="card-header">Update User Information:</div>
+            <div class="card-header"><h1>Update Flight Information:</h1></div>
             <div class="card-body bg-light">
-                <a href="<?php echo BASE_URL; ?>" class="btn btn-sm btn-secondary mr-2 mb-2">
-                    <i class="fas fa-home"></i>
-                </a>
+                <div>
+                    <a href="<?php echo BASE_URL;?>" class="btn btn btn-secondary mr-2 mb-2">
+                        <i class="fas fa-home"></i>
+                    </a>
+                    <a href="<?php echo BASE_URL;?>logout" title="Logout" class="btn btn-outline-primary float-end">
+                        <i class="fas fa-user"></i> <?php echo $_SESSION['username'];?>
+                    </a>
+                </div>
                 <form method="post">
-                
                     <div class="form-group">
                         <label for="origin">Origin</label>
                         <input type="text" name="origin" class="form-control" placeholder="Origin"

@@ -1,7 +1,7 @@
 <?php
 
     if($_SESSION['role'] == 0){
-        Redirect::to('home'); }
+        Redirect::to(BASE_URL); }
 
     if(isset($_POST['find'])){
         $data = new FlightController();
@@ -17,19 +17,12 @@
         <div class="col-md-8 mx-auto"></div>
         <div class="card">
             <div class="card-body bg-light">
-                <form method="post" class="input-group d-flex float-end flex-row"> 
-                    <input type="text" class="form-control" name="search" placeholder="Search">
-                    <button class="btn btn-primary btn-sm" type="submit" name="find">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </form>
                 <div>
-                <a href="<?php echo BASE_URL;?>add" class="btn btn-sm btn-primary m-2">
-                <i class="fas fa-user-plus"></i>
-                </a>
-                    <a href="<?php echo BASE_URL;?>logout" title="Logout" class="btn btn-link ">
-                        <i class="fas fa-user"> <?php echo $_SESSION['username'];?></i>
+                    <h1>Admin Dashboard
+                    <a href="<?php echo BASE_URL;?>logout" title="Logout" class="btn btn-outline-primary float-end">
+                        <i class="fas fa-user"></i> <?php echo $_SESSION['username'];?>
                     </a>
+                    </h1>
                 </div>
                 <table class="table table-hover">
                     <thead>
@@ -53,16 +46,23 @@
                                 <td><?php echo $flight['dep_time']; ?></td>
                                 <td><?php echo $flight['return_time']?></td>
                                 <td><?php echo $flight['seats']; ?></td>
-                                <td><?php echo $flight['flighttype']; ?>
+                                <td>
+                                    <?php echo $flight['flighttype'] == "One Way"
+                                    ?
+                                    '<h5><span class="badge bg-primary">One Way</span></h5>'
+                                    :
+                                    '<h5><span class="badge bg-secondary">Round Trip</span></h5>'
+                                    ?>
+                                </td>
                                 </td>
                                 <td class="d-flex flex-row">
                                     <form method="post" class="me-2" action="update">
                                         <input type="hidden" name="id" value="<?php echo $flight['id']; ?>">
-                                        <button class="btn btn-sm btn-warning"><i class="la la-edit fa fa-edit"></i></button>
+                                        <button class="btn btn btn-warning"><i class="la la-edit fa fa-edit"></i></button>
                                     </form>
                                     <form method="post" class="me-2" action="delete">
                                         <input type="hidden" name="id" value="<?php echo $flight['id']; ?>">
-                                        <button class="btn btn-sm btn-danger"><i class="fa fa-trash la la-trash"></i></button>
+                                        <button class="btn btn btn-danger"><i class="fa fa-trash la la-trash"></i></button>
                                     </form>
                                 </td>
                             </tr>

@@ -1,70 +1,68 @@
 <?php
-$data = array(
-    'user_id' => $_SESSION['id'],
-    'flight_id' => $_POST['id'],
-    'destination' => $_POST['destination'],
-    'origin' => $_POST['origin'],
-    'dep_time' => $_POST['dep_time'],
-    'ret_time' => $_POST['return_time'],
-    'flighttype' => $_POST['flighttype'],
-);
-print_r($data);
-	if(isset($_POST['id'])){
-		$reserveFlight = new FlightController();
-		$flight = $reserveFlight->getOneFlight();
-}else{
-    Redirect::to('home');
-}
-	if(isset($_POST['submit'])){
-		$reserveFlight = new FlightController();
-		$reserveFlight->reserveFlight();
-	}
+    if(isset($_POST['reserve'])){
+        $data = new FlightController();
+        $flights = $data->reserveFlight();
+    } else{
+        $data = new FlightController();
+        $flights = $data->getAllreservations();
+    }
 ?>
 
 <div class="container">
     <div class="row">
         <div class="col-md-8 mx-auto"></div>
         <div class="card">
-            <div class="card-header">Update User Information:</div>
             <div class="card-body bg-light">
-                <a href="<?php echo BASE_URL; ?>" class="btn btn-sm btn-secondary mr-2 mb-2">
-                    <i class="fas fa-home"></i>
-                </a>
-                <form method="post">
-                    <div class="form-group">
-                        <label for="origin">Origin</label>
-                        <input type="text" name="origin" class="form-control" placeholder="Origin"
-                        value="<?php echo $flight->origin; ?>" disabled>
-                    </div> 
-                    <div class="form-group">
-                        <label for="destination">Destination:</label>
-                        <input type="text" name="destination" class="form-control" placeholder="destination"
-                        value="<?php echo $flight->destination; ?>" disabled>
-                        <input type="hidden" name="id" value="<?php echo $flight->id;?>" >
-                    </div>
-                    <div class="form-group">
-                        <label for="dep_time">Departure Date/time:</label>
-                        <input type="datetime-local" name="dep_time" class="form-control" placeholder="Departure Date/Time"
-                        value="<?php echo $flight->dep_time; ?>" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label for="return_time">Return Date/time:</label>
-                        <input type="datetime-local" name="return_time" class="form-control" placeholder="Return Date/Time"
-                        value="<?php echo $flight->return_time; ?>" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label for="flighttype">Flight type</label>
-                        <input type="text" name="flighttype" class="form-control" placeholder="Flight type"
-                        value="<?php echo $flight->flighttype; ?>" disabled>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary mt-3" name="submit">Reserve</button>
-                    </div>
-                </form>
-            </div>
+                <div>
+                    <a href="<?php echo BASE_URL;?>" class="btn btn btn-secondary mr-2 mb-2">
+                        <i class="fas fa-home"></i>
+                    </a>
+                    <a href="<?php echo BASE_URL;?>logout" title="Logout" class="btn btn-outline-primary float-end">
+                        <i class="fas fa-user"></i> <?php echo $_SESSION['username'];?>
+                    </a>
+                </div>
+                <div>
+                <h1>Your Reservations</h1>
+                </div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Origin</th>
+                            <th scope="col">Destination</th>
+                            <th scope="col">Departure Time</th>
+                            <th scope="col">Flight Type</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($flights as $flight) : ?>
+                            <tr>
+                                <td ></td>
+                                <td><?php echo $flight['origin']; ?></td>
+                                <td><?php echo $flight['destination']; ?></td>
+                                <td><?php echo $flight['dep_time']; ?></td>
+                                <td>
+                                    <?php echo $flight['flight_type'] == "One Way"
+                                    ?
+                                    '<h5><span class="badge bg-primary">One Way</span></h5>'
+                                    :
+                                    '<h5><span class="badge bg-secondary">Round Trip</span></h5>'
+                                    ?>
+                                </td>
+                                <td class="d-flex flex-row">
+                                    <form method="post" class="me-2" action="deleterev">
+                                        <input type="text" hidden name="id" value="<?php echo $flight['id']; ?>">
+                                        <button class="btn btn btn-danger"><i class="fa fa-trash la la-trash"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <?php endforeach ?>
+                    </tbody>
+                </table>
+            </div> 
         </div>
     </div>
-
-
-
 </div>
+
+

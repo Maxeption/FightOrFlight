@@ -8,26 +8,26 @@
     }
 ?>
 
-<div class="container">
+<div class="container" >
     <div class="row">
         <div class="col-md-8 mx-auto"></div>
         <div class="card">
             <div class="card-body bg-light">
             <div>
-                    <a href="<?php echo BASE_URL;?>logout" title="Logout" class="btn btn-link ">
-                        <i class="fas fa-user"> <?php echo $_SESSION['username'];?></i>
-                    </a>
+                    <h1>Reservation Dashboard
+                        <a href="<?php echo BASE_URL;?>logout" title="Logout" class="btn btn-outline-primary float-end">
+                            <i class="fas fa-user"></i> <?php echo $_SESSION['username'];?>
+                        </a>                    
+                        <a href="<?php echo BASE_URL;?>reserve" title="reserve" class="btn btn-primary me-4 float-end ">
+                            <i class="fas fa-plane"></i>
+                            Your Reservations
+                        </a>
+                    </h1>
                 </div>
-                <form method="post" class="input-group float-end"> 
-                    <input type="text" class="form-control" name="search" placeholder="Search">
-                    <button class="btn btn-primary btn-sm" type="submit" name="find">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </form>
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">ID</th>
+                            <th scope="col"></th>
                             <th scope="col">Origin</th>
                             <th scope="col">Destination</th>
                             <th scope="col">Departure Time</th>
@@ -40,7 +40,8 @@
                     <tbody>
                         <?php foreach ($flights as $flight) : ?>
                             <tr>
-                                <th scope="row"><?php echo $flight['id']; ?></th>
+                                <th></th>
+                                <th scope="row" hidden><?php echo $flight['id']; ?></th>
                                 <td ><?php echo $flight['origin']; ?></td>
                                 <td><?php echo $flight['destination']; ?></td>
                                 <td><?php echo $flight['dep_time']; ?></td>
@@ -64,7 +65,6 @@
                                         <input type="text" hidden name="flighttype" value="<?php echo $flight['flighttype']; ?>">
                                         <button class="btn btn btn-info" type="submit" name="reserve"><i class="fa fa-plane-departure"></i> Reserve Now</button>
                                     </form>
-
                                 </td>
                             </tr>
                         <?php endforeach ?>
