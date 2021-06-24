@@ -1,7 +1,7 @@
 <?php 
 	if(isset($_POST['id'])){
-		$deleteEmploye = new EmployesController();
-		$deleteEmploye->deleteEmploye();
+		$deleteFlight = new FlightController();
+		$deleteFlight->deleteFlight();
         Redirect::to("home");
 	}
 

@@ -6,15 +6,12 @@ require_once './views/includes/alerts.php';
 
 $home = new HomeController();
 
-$pages = ['home','add','update','delete', 'logout', 'dashadmin'];
+$pages = ['home','add','update','delete', 'logout', 'dashadmin', 'reserve'];
 
 if(isset($_SESSION['logged']) && $_SESSION['logged'] === true){
     if(isset($_GET['page'])){
         if(in_array($_GET['page'], $pages)){
             $page = $_GET['page'];
-            if($page == 'dashadmin' && isset($_SESSION['role']) && $_SESSION['role'] == 1){
-            
-            }
             $home->index($page); 
         }else{
             include('views/includes/404.php');

@@ -1,14 +1,23 @@
 <?php
+$data = array(
+    'user_id' => $_SESSION['id'],
+    'flight_id' => $_POST['id'],
+    'destination' => $_POST['destination'],
+    'origin' => $_POST['origin'],
+    'dep_time' => $_POST['dep_time'],
+    'ret_time' => $_POST['return_time'],
+    'flighttype' => $_POST['flighttype'],
+);
+print_r($data);
 	if(isset($_POST['id'])){
-		$exitFlight = new FlightController();
-		$flight = $exitFlight->getOneFlight();
+		$reserveFlight = new FlightController();
+		$flight = $reserveFlight->getOneFlight();
 }else{
     Redirect::to('home');
 }
-
 	if(isset($_POST['submit'])){
-		$exitFlight = new FlightController();
-		$exitFlight->updateFlight();
+		$reserveFlight = new FlightController();
+		$reserveFlight->reserveFlight();
 	}
 ?>
 
@@ -22,49 +31,35 @@
                     <i class="fas fa-home"></i>
                 </a>
                 <form method="post">
-                
                     <div class="form-group">
                         <label for="origin">Origin</label>
                         <input type="text" name="origin" class="form-control" placeholder="Origin"
-                        value="<?php echo $flight->origin; ?>">
+                        value="<?php echo $flight->origin; ?>" disabled>
                     </div> 
                     <div class="form-group">
                         <label for="destination">Destination:</label>
                         <input type="text" name="destination" class="form-control" placeholder="destination"
-                        value="<?php echo $flight->destination; ?>">
-                        <input type="hidden" name="id" value="<?php echo $flight->id;?>">
+                        value="<?php echo $flight->destination; ?>" disabled>
+                        <input type="hidden" name="id" value="<?php echo $flight->id;?>" >
                     </div>
                     <div class="form-group">
                         <label for="dep_time">Departure Date/time:</label>
                         <input type="datetime-local" name="dep_time" class="form-control" placeholder="Departure Date/Time"
-                        value="<?php echo $flight->dep_time; ?>">
+                        value="<?php echo $flight->dep_time; ?>" disabled>
                     </div>
                     <div class="form-group">
                         <label for="return_time">Return Date/time:</label>
                         <input type="datetime-local" name="return_time" class="form-control" placeholder="Return Date/Time"
-                        value="<?php echo $flight->return_time; ?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="seats">Seats</label>
-                        <input type="number" min="1" max="400" name="seats" class="form-control" placeholder="Seats"
-                        value="<?php echo $flight->seats; ?>">
+                        value="<?php echo $flight->return_time; ?>" disabled>
                     </div>
                     <div class="form-group">
                         <label for="flighttype">Flight type</label>
-                        <select class="form-control" name="flighttype">
-                            <option value="One way" 
-                            <?php echo $flight->flighttype ? 'selected' : '' ?>
-                            >One way</option>
-
-                            <option value="Round Trip"
-                            <?php echo !$flight->flighttype ? 'selected' : '' ?>
-                            >Round Trip</option>
-                        </select>
+                        <input type="text" name="flighttype" class="form-control" placeholder="Flight type"
+                        value="<?php echo $flight->flighttype; ?>" disabled>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary mt-3" name="submit">Add</button>
+                        <button type="submit" class="btn btn-primary mt-3" name="submit">Reserve</button>
                     </div>
-
                 </form>
             </div>
         </div>
