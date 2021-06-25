@@ -10,7 +10,6 @@ if (isset($_POST['addpass'])) {
     $addPassenger->addPassenger();
 }
 ?>
-
 <div class="container">
         <div class="row">
             <div class="col-md-8 mx-auto">
@@ -29,13 +28,13 @@ if (isset($_POST['addpass'])) {
                         </div>
                             <div class="form-group">
                                 <label for="fname">Please enter your passenger's Full name</label>
-                                <form id="pass_form">
+                                <form method="post" id="pass_form">
                                     <input type="text" hidden value="<?php echo $_SESSION['id'] ?>" name="user_id">
                                     <input type="text" hidden value="<?php echo $_POST['id'] ?>" name="res_id">
                                 </form>
                             </div>
                         <div class="form-group">
-                           <button type="submit" class="btn btn-primary mt-3" name="addpass">Add passenger to flight</button>
+                           <button form="pass_form" type="submit" class="btn btn-primary mt-3" name="addpass">Add passenger to flight</button>
                           <button type="submit" class="btn btn-primary mt-3" id="pluspass" name="add1pass"><i class="fa fa-plus"></i></button>
                     </div>
                 </div>

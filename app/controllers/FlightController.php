@@ -113,8 +113,8 @@ class FlightController{
         if(isset($_POST['addpass'])){
             $data = array(
                 'user_id' => $_SESSION['id'],
-                'reservation_id' => $_POST['id'],
-                'fullname' => $_POST['destination'],
+                'reservation_id' => $_POST['res_id'],
+                'fullname' => $_POST['passfullname'],
             );
             $result = Flight::addpass($data);
             if($result === 'ok'){

@@ -119,14 +119,12 @@ class Flight {
         }
     }
     static public function addpass($data){
-        $stmt = DB::connect()->prepare('INSERT INTO passenger (user_id, reservation_id, fullname) VALUES (:user_id,:reservation_id,:fullname)');
-        $stmt->bindParam(':user_id',$data['user_id']);
-        $stmt->bindParam(':reservation_id',$data['reservation_id']);
-        $stmt->bindParam(':fullname',$data['fullname']);
-        if($stmt->execute()){
-            return 'ok';
-        }else{
-            return 'error';
+        for($i = 0; $i < count($data['fullname']); $i++){
+            $stmt = DB::connect()->prepare('INSERT INTO passenger (user_id, reservation_id, fullname) VALUES (:user_id,:reservation_id,:fullname)');
+            $stmt->bindParam(':user_id',$data['user_id']);
+            $stmt->bindParam(':reservation_id',$data['reservation_id']);
+            $stmt->bindParam(':fullname',$data['fullname'][$i]);
+            $stmt->execute();
         }
     }
 }
