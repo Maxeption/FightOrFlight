@@ -6,7 +6,7 @@ require_once './views/includes/alerts.php';
 
 $home = new HomeController();
 
-$pages = ['home','add','update','delete','login', 'logout', 'dashadmin', 'reserve', 'deleterev'];
+$pages = ['home','add','update','delete','login', 'logout', 'dashadmin', 'reserve', 'deleterev', 'homecopy', 'addpassenger'];
 
 if(isset($_SESSION['logged']) && $_SESSION['logged'] === true){
     if(isset($_GET['page'])){
@@ -20,11 +20,10 @@ if(isset($_SESSION['logged']) && $_SESSION['logged'] === true){
         $home->index('home');
     }
         require_once './views/includes/footer.php';
-
+        
 }else if (isset($_GET['page']) && $_GET['page'] === 'register'){
     $home->index('register');
 }else{
     $home->index('login');
 }
-
 ?>

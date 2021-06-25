@@ -1,4 +1,8 @@
 <?php
+    if($_SESSION['role'] == 1){
+        Redirect::to(BASE_URL); }
+    
+    
     if(isset($_POST['reserve'])){
         $data = new FlightController();
         $flights = $data->reserveFlight();
@@ -51,6 +55,10 @@
                                     ?>
                                 </td>
                                 <td class="d-flex flex-row">
+                                    <form method="post" class="me-2" action="addpassenger">
+                                        <input type="hidden" name="id" value="<?php echo $flight['id']; ?>">
+                                        <button class="btn btn btn-info"><i class="fa fa-users"></i> <i class="fa fa-plus"></i></button>
+                                    </form>
                                     <form method="post" class="me-2" action="deleterev">
                                         <input type="text" hidden name="id" value="<?php echo $flight['id']; ?>">
                                         <button class="btn btn btn-danger"><i class="fa fa-trash la la-trash"></i></button>

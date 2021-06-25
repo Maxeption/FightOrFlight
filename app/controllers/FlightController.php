@@ -10,7 +10,6 @@ class FlightController{
         $flights = Flight::getAllres();
         return $flights;
     }
-
     public function getOneflight(){
         if(isset($_POST['id'])){
             $data = array(
@@ -20,7 +19,6 @@ class FlightController{
             return $flight;
         }
     }
-
     public function findflights(){
         if(isset($_POST['search'])){
             $data = array('search' => $_POST['search']);
@@ -106,6 +104,22 @@ class FlightController{
             if($result === 'ok'){
                     Session::set('success', 'Flight reserved');
                     Redirect::to('home');
+            }else{
+               echo $result ;
+            }
+        }
+    }
+    public function addPassenger(){
+        if(isset($_POST['addpass'])){
+            $data = array(
+                'user_id' => $_SESSION['id'],
+                'reservation_id' => $_POST['id'],
+                'fullname' => $_POST['destination'],
+            );
+            $result = Flight::addpass($data);
+            if($result === 'ok'){
+                Session::set('success', 'Passenger added');
+                Redirect::to('home');
             }else{
                echo $result ;
             }
