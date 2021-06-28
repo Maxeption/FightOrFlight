@@ -7,7 +7,7 @@ class FlightController{
         return $flights;
     }
     public function getAllreservations(){
-        $flights = Flight::getAllres();
+        $flights = Flight::getAllres($_SESSION['id']);
         return $flights;
     }
     public function getOneflight(){
@@ -39,7 +39,7 @@ class FlightController{
             $result = Flight::add($data);
             if($result === 'ok'){
                     Session::set('success', 'Flight Added');
-                    Redirect::to('home');
+                    Redirect::to('dashadmin');
             }else{
                echo $result ;
             }

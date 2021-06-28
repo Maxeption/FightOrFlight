@@ -15,6 +15,11 @@
             }
         }
 
+        // static public function getUsers(){
+        //     $stmt = DB::connect()->prepare('SELECT * FROM users');
+        //     $stmt->execute();
+        //     return $stmt->fetchAll();
+        // }
 
         static public function createUser($data){
         $stmt = DB::connect()->prepare('INSERT INTO users (fname, username, password) VALUES (:fname,:username,:password)');

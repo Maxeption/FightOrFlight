@@ -24,6 +24,11 @@ class UserController {
         }
     }
 
+    // public function getAllUsers(){
+    //     $users = User::getUsers();
+    //     return $users;
+    // }
+
     public function register(){
 
         if(isset($_POST['submit'])){
