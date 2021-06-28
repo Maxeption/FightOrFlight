@@ -2,11 +2,10 @@
     if($_SESSION['role'] == 1){
         Redirect::to(BASE_URL); }
     
-    
     if(isset($_POST['reserve'])){
         $data = new FlightController();
         $flights = $data->reserveFlight();
-    } else{
+    }else{
         $data = new FlightController();
         $flights = $data->getAllreservations();
     }
@@ -22,7 +21,7 @@
                         <i class="fas fa-home"></i>
                     </a>
                     <a href="<?php echo BASE_URL;?>logout" title="Logout" class="btn btn-outline-primary float-end">
-                        <i class="fas fa-user"></i> <?php echo $_SESSION['username'];?>
+                        <i class="fas fa-user"></i> <?php echo $_SESSION['username'];?> | Logout
                     </a>
                 </div>
                 <div>

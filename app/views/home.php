@@ -7,7 +7,7 @@
     $flights = $data->getAllFlights();
 ?>
 
-<div class="container" >
+<div class="container">
     <div class="row">
         <div class="col-md-8 mx-auto"></div>
         <div class="card">
