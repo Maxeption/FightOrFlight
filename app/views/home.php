@@ -13,9 +13,9 @@
         <div class="card">
             <div class="card-body bg-light">
             <div>
-                    <h1>Reservation Dashboard
+                    <h1><i class="fa fa-globe-africa"></i> Reservation Dashboard
                         <a href="<?php echo BASE_URL;?>logout" title="Logout" class="btn btn-outline-primary float-end">
-                            <i class="fas fa-user"></i> <?php echo $_SESSION['username'];?>
+                            <i class="fas fa-user"></i> <?php echo $_SESSION['username'];?> | Logout
                         </a>                    
                         <a href="<?php echo BASE_URL;?>reserve" title="reserve" class="btn btn-primary me-4 float-end ">
                             <i class="fas fa-plane"></i>
@@ -27,12 +27,12 @@
                     <thead>
                         <tr>
                             <th scope="col"></th>
-                            <th scope="col">Origin</th>
-                            <th scope="col">Destination</th>
-                            <th scope="col">Departure Time</th>
-                            <th scope="col">Return Time</th>
-                            <th scope="col">Seats</th>
-                            <th scope="col">Flight Type</th>
+                            <th scope="col"><i class="fa fa-plane-departure"></i> Origin</th>
+                            <th scope="col"><i class="fa fa-map-marked-alt"></i> Destination</th>
+                            <th scope="col"><i class="fa fa-clock"></i> Departure Time</th>
+                            <th scope="col"><i class="fa fa-clock"></i> Return Time</th>
+                            <th scope="col"><i class="fa fa-chair"></i> Seats</th>
+                            <th scope="col"><i class="fa fa-location-arrow"></i> Flight Type</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -48,10 +48,10 @@
                                 <td><?php echo $flight['seats']; ?></td>
                                 <td>
                                     <?php echo $flight['flighttype'] == "One Way"
-                                    ?
-                                    '<h5><span class="badge bg-primary">One Way</span></h5>'
-                                    :
-                                    '<h5><span class="badge bg-secondary">Round Trip</span></h5>'
+                                        ?
+                                        '<h5><span class="badge bg-primary"><i class="fa fa-location-arrow"></i> One Way</span></h5>'
+                                        :
+                                        '<h5><span class="badge bg-secondary"><i class="fa fa-exchange-alt"></i> Round Trip</span></h5>'
                                     ?>
                                 </td>
                                 <td class="d-flex flex-row">

@@ -6,7 +6,7 @@ require_once './views/includes/alerts.php';
 
 $home = new HomeController();
 
-$pages = ['home','add','update','delete','login', 'logout', 'dashadmin', 'reserve', 'deleterev', 'homecopy', 'addpassenger', 'allres'];
+$pages = ['home','add','update','delete','login', 'register', 'logout', 'dashadmin', 'reserve', 'deleterev', 'homecopy', 'addpassenger', 'allres'];
 
 if(isset($_SESSION['logged']) && $_SESSION['logged'] === true){
     if(isset($_GET['page'])){

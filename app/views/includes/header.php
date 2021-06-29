@@ -11,6 +11,17 @@
     <link rel="stylesheet" href="./style/style.css">
     </head>
 <body>
-
+<style>
+    body{
+        background-image: url(https://images.unsplash.com/photo-1554123168-b400f9c806ca?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80);
+    }
+    .container{
+        padding-top: 250px;
+    }
+    .row{
+        --bs-gutter-x: 0;
+    }
+    
+</style>
 </body>
 </html>

@@ -14,6 +14,9 @@
                 <a href="<?php echo BASE_URL; ?>" class="btn btn-sm btn-secondary mr-2 mb-2">
                     <i class="fas fa-home"></i>
                 </a>
+                <a href="<?php echo BASE_URL; ?>logout" title="Logout" class="btn btn-outline-primary float-end">
+                    <i class="fas fa-user"></i> <?php echo $_SESSION['username']; ?> | Logout
+                </a>
                 <form method="post">
                     <div class="form-group">
                         <label for="origin">Origin :</label>

@@ -23,7 +23,7 @@ if (isset($_POST['addpass'])) {
                                 <i class="fas fa-home"></i>
                             </a>
                             <a href="<?php echo BASE_URL; ?>logout" title="Logout" class="btn btn-outline-primary float-end">
-                                <i class="fas fa-user"></i> <?php echo $_SESSION['username']; ?>
+                                <i class="fas fa-user"></i> <?php echo $_SESSION['username']; ?> | Logout
                             </a>
                         </div>
                             <div class="form-group">

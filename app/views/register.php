@@ -5,12 +5,21 @@
     }
 ?>
 
+<style>
+    .container{
+        padding-top: 250px;
+    }
+    .row{
+        --bs-gutter-x: 0;
+    }
+</style>
+
 <div class="container">
     <div class="row">
         <div class="col-md-8 mx-auto"></div>
-        <div class="card">
-        <div class="card-header">
-        <h3 class="text-center">Register <i class="fa fa-user-plus"></i></h3>
+        <div class="card ">
+        <div class="card-header bg-primary">
+        <h3 class="text-center text-white"><i class="fa fa-user-plus"></i> Register</h3>
         </div>
             <div class="card-body bg-light">
                 <form method="post" class="me-2">
