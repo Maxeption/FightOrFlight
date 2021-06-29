@@ -19,7 +19,7 @@ if(isset($_SESSION['logged']) && $_SESSION['logged'] === true){
     }else{
         $home->index('home');
     }
-        require_once './views/includes/footer.php';
+    require_once './views/includes/footer.php';
         
 }else if (isset($_GET['page']) && $_GET['page'] === 'register'){
     $home->index('register');
